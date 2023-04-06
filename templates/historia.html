@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Program Magazyn wersja Web</title>
+</head>
+<body bgcolor="lightblue">
+    <h2>Program <b>MAGAZYN</b> przegląd historii</h2>
+<hr>
+    <br>
+    <a href="/">Menu główne</a>
+    <br><br>
+    <table border="2" bordercolor="red">
+        <tr><td width="325" align="right">
+        <h4>Podaj zakres do wyświetlenia - jeśli nie podasz<br>
+        wartości przyjmę domyślną wartość: wszystkie</h4>
+        <form method="post" action="">
+            <input type="hidden" name="operacja" value="przeglad">
+            <label>Podaj liczbę początkową</label>
+            <input type="number" name="hi_od" min="0"><br><br>
+            <label>Podaj liczbę końcową</label>
+            <input type="number" name="hi_do" min="0"><br><br>
+            <input type="submit" value="Wykonaj">
+        </form>
+        </td></tr></table>
+
+    <h4>{{informacja}}</h4>
+    {% if dane %}
+     <table border="2" bordercolor="red">
+        <tr>
+            <th width="30">Id</th>
+            <th width="90">Operacja</th>
+            <th width="190">Opis/Stan</th>
+            <th width="60">Cena</th>
+            <th width="50">Ilość</th>
+        </tr>
+        {% for i in dane %}
+        <tr>
+            <td width="30">{{ i }}</td>
+            <td width="90">{{ dane[i][0] }}</td>
+            <td width="190">{{ dane[i][1] }}</td>
+            <td width="60">{{ dane[i][2] }}</td>
+            <td width="50">{{ dane[i][3] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+     {% endif %}
+</body>
+</html>

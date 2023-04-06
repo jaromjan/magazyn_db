@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Program Magazyn wersja Web</title>
+</head>
+<body bgcolor="lightblue">
+    <h2>Program <b>MAGAZYN</b> menu główne</h2>
+<hr>
+
+    <table border="2" bordercolor="red">
+        <tr><td width="165">
+    <h4>Saldo</h4>
+    <form method="post" action="">
+        <input type="hidden" name="Operacja" value="saldo">
+        <label>Podaj kwotę</label><br>
+        <input type="number" name="kwota"><br><br>
+        <input type="submit" value="       Dopisz do salda       ">
+    </form></td><td width="165">
+    <h4>Magazyn</h4>
+    <form method="post" action="">
+        <input type="hidden" name="Operacja" value="magazyn">
+        <label>Podaj nazwę przedmiotu</label><br>
+        <input type="text" name="mg_nazwa" ><br><br>
+        <input type="submit" size="165" value=" Wyszukaj w magazynie  ">
+    </form></td></tr>
+        <tr><td width="165">
+    <h4>Sprzedaż</h4>
+    <form method="post" action="">
+        <input type="hidden" name="Operacja" value="sprzedaz">
+        <label>Podaj nazwę przedmiotu</label><br>
+        <input type="text" name="sp_nazwa"><br>
+        <label>Podaj cenę przedmiotu</label><br>
+        <input type="number" name="sp_cena" min="0"><br>
+        <label>Podaj ilość sztuk</label><br>
+        <input type="number" name="sp_ilosc" min="0"><br><br>
+        <input type="submit" value="     Sprzedaj wybrane     ">
+    </form></td><td width="165">
+    <h4>Zakup</h4>
+    <form method="post" action="">
+        <input type="hidden" name="Operacja" value="zakup">
+        <label>Podaj nazwę przedmiotu</label><br>
+        <input type="text" name="za_nazwa"><br>
+        <label>Podaj cenę przedmiotu</label><br>
+        <input type="number" name="za_cena" min="0"><br>
+        <label>Podaj ilość sztuk</label><br>
+        <input type="number" name="za_ilosc" min="0"><br><br>
+        <input type="submit" value="       Zakup wybrane       ">
+    </form></td></tr>
+            <tr><td width="165">
+
+    <form method="post" action="">
+        <label><b>Konto</b></label>
+        <input type="hidden" name="Operacja" value="konto">
+        <input type="submit" value="    Odczytaj stan konta    ">
+    </form>
+        </td><td width="165">
+
+    <form method="post" action="">
+        <label><b>Lista</b></label>
+        <input type="hidden" name="Operacja" value="lista">
+        <input type="submit" value="Odczytaj stan magazynu">
+    </form></td></tr>
+            <tr><td width="165">
+
+    <form method="post" action="/historia/">
+        <label><b>Przegląd</b></label><br>
+        <input type="hidden" name="Operacja" value="przeglad">
+        <input type="submit" value="      Skocz do historii      ">
+    </form></td><td width="165">
+
+    <form method="post" action="">
+        <label><b>Koniec</b></label><br>
+        <input type="hidden" name="Operacja" value="koniec">
+        <input type="submit" value="     Zakończ program      ">
+    </form></td></tr></table>
+    {% if wartosc %}
+     <h4>Stan magazynu</h4>
+     <table border="1">
+        <tr>
+            <th width="165">Nazwa</th>
+            <th width="100">Cena</th>
+            <th width="65">Ilosc</th>
+        </tr>
+        {% for i in wartosc %}
+        <tr>
+            <td width="165">{{ wartosc[i][0] }}</td>
+            <td width="100">{{ wartosc[i][1] }}</td>
+            <td width="65">{{ wartosc[i][2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+     {% endif %}
+    <h4>{{komunikat}}</h4>
+</body>
+</html>
